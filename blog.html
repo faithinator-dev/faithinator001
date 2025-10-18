@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Faithinator Creative Lab</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+        CSS STYLES FOR FAITHINATOR CREATIVE LAB
+        ========================================
+        */
+
+        :root {
+            --bg-color: #111119;
+            --primary-bg: #1e1e2c;
+            --text-color: #f0f0f0;
+            --accent-color: #4a90e2;
+            --glow-color: rgba(74, 144, 226, 0.4);
+            
+            --heading-font: 'Press Start 2P', cursive;
+            --body-font: 'Pixelify Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(var(--primary-bg) 1px, transparent 1px),
+                linear-gradient(90deg, var(--primary-bg) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--primary-bg);
+            position: relative;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+        
+        .nav-links a:hover::before {
+            content: ">";
+            margin-right: 5px;
+        }
+        
+        /* Mobile Nav Toggle (Hamburger Menu) */
+        #nav-toggle {
+            display: none;
+        }
+        .nav-button-label {
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .nav-button-label .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .nav-button-label .hamburger::before,
+        .nav-button-label .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: transform 0.3s;
+        }
+        .nav-button-label .hamburger::before {
+            top: -8px;
+        }
+        .nav-button-label .hamburger::after {
+            bottom: -8px;
+        }
+
+        /* --- GENERAL SECTION STYLING --- */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+        
+        .section-title::before {
+            content: "// ";
+            opacity: 0.5;
+        }
+
+        /* --- BLOG PAGE STYLES --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .blog-post-card {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: block; /* Important for hiding/showing posts */
+        }
+        
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .blog-post-card h3 {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Pagination Controls --- */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+            gap: 1.5rem;
+        }
+
+        .pagination-btn {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            font-family: var(--heading-font);
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .pagination-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+        }
+        
+        .text-wrapper {
+    background-color: var(--primary-bg); /* Use a slightly darker background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: transparent;
+            color: var(--accent-color);
+        }
+
+        /* --- CALL TO ACTION --- */
+        .cta-section { text-align: center; }
+        
+        .cta-button {
+            display: inline-block; font-family: var(--heading-font);
+            background-color: var(--accent-color); color: var(--bg-color);
+            padding: 1rem 2rem; text-decoration: none; font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .cta-button:hover { background-color: transparent; color: var(--accent-color); }
+        
+        .cta-button::before { content: "[ "; }
+        .cta-button::after { content: " ]"; }
+        
+        /* --- FOOTER --- */
+        .main-footer {
+            text-align: center; padding: 2rem 0; margin-top: 4rem;
+            border-top: 1px solid var(--primary-bg); font-size: 0.9rem; opacity: 0.7;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - MEDIA QUERIES
+           ========================================
+        */
+        @media (max-width: 768px) {
+            /* --- Responsive Navigation --- */
+            .nav-button-label {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-bg);
+                border-bottom: 1px solid var(--accent-color);
+                
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+            }
+            
+            #nav-toggle:checked ~ .nav-links {
+                max-height: 300px;
+            }
+            
+            /* --- General Spacing and Fonts --- */
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo">FT_CL</a>
+                
+                <input type="checkbox" id="nav-toggle">
+                <label for="nav-toggle" class="nav-button-label">
+                    <span class="hamburger"></span>
+                </label>
+                
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">BLOG_PORTAL</h2>
+                <div class="blog-grid">
+                    
+                    <div class="blog-post-card">
+                        <h3>THE_WEB_IS_A_BLANK_CANVAS</h3>
+                        <p>Web development is an art form. It's the perfect blend of technical skill and creative expression.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>UI_UX_DESIGN_PRINCIPLES</h3>
+                        <p>A guide to creating user-centric designs that are both intuitive and visually appealing.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>THE_POWER_OF_NARRATIVE</h3>
+                        <p>How effective content writing can captivate an audience and build a lasting brand identity.</p>
+                    </div>
+                    
+                    <div class="blog-post-card">
+                        <h3>FROM_CODE_TO_CREATION</h3>
+                        <p>An inside look at the journey from a simple idea to a fully functional website.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>THE_FUTURE_OF_AI_IN_DESIGN</h3>
+                        <p>Exploring how artificial intelligence is changing the landscape of graphic design and digital art.</p>
+                    </div>
+                    
+                    <div class="blog-post-card">
+                        <h3>MASTERING_THE_ART_OF_COPY</h3>
+                        <p>Simple strategies for writing persuasive and engaging content for marketing campaigns.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>RESPONSIVE_DESIGN_CHALLENGES</h3>
+                        <p>Navigating the complexities of building websites that work flawlessly on any device.</p>
+                    </div>
+                    
+                    <div class="blog-post-card">
+                        <h3>THE_ELEMENTS_OF_GREAT_BRANDING</h3>
+                        <p>What makes a brand truly memorable? I break down the core components of strong branding.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>BUILDING_AN_AUDIENCE_WITH_BLOGS</h3>
+                        <p>A step-by-step guide to using a blog as a powerful tool for business growth.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>MODERN_JAVASCRIPT_TECHNIQUES</h3>
+                        <p>Discover the latest techniques and best practices to write cleaner, more efficient JavaScript code.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>LOGOS_THAT_STAND_THE_TEST_OF_TIME</h3>
+                        <p>The timeless principles of logo design and how to create an icon that lasts.</p>
+                    </div>
+                    
+                    <div class="blog-post-card">
+                        <h3>THE_SECRET_TO_SEO_FRIENDLY_CONTENT</h3>
+                        <p>Crafting content that not only engages readers but also ranks highly on search engines.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>DECODING_COLOR_THEORY</h3>
+                        <p>A beginner's guide to using color psychology in your graphic design projects.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>FROM_WIREFRAME_TO_LAUNCH</h3>
+                        <p>Understanding the full development lifecycle of a modern web application.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>THE_ART_OF_SHORT_FORM_COPY</h3>
+                        <p>How to make every word count in headlines, social media posts, and ads.</p>
+                    </div>
+                    
+                    <div class="blog-post-card">
+                        <h3>E-COMMERCE_WEB_DEVELOPMENT_TRENDS</h3>
+                        <p>A look at the latest technologies and design trends shaping the world of online shopping.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>CREATING_IMMERSIVE_EXPERIENCES</h3>
+                        <p>Using interactive elements and animations to build a truly memorable user experience.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>DESIGNING_FOR_ACCESSIBILITY</h3>
+                        <p>Why designing for everyone isn't just a good idea—it's essential for your brand.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>THE_JOURNALIST'S_GUIDE_TO_BLOGGING</h3>
+                        <p>How the principles of professional journalism can elevate your blog content.</p>
+                    </div>
+
+                    <div class="blog-post-card">
+                        <h3>MAINTAINING_A_HEALTHY_WEBSITE</h3>
+                        <p>Simple tips for keeping your website secure, fast, and up to date.</p>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <button id="prevBtn" class="pagination-btn">Previous</button>
+                    <button id="nextBtn" class="pagination-btn">Next</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cta" class="section cta-section">
+            <div class="container">
+                <h2 class="section-title">READY TO COLLABORATE?</h2>
+                <a href="contact.html" class="cta-button">CONNECT NOW</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Faithinator Creative Lab. All Rights Reserved. | Designed by Faith Tolu in Ogbomoso, Nigeria.</p>
+        </div>
+    </footer>
+    
+    <script>
+        const blogPosts = document.querySelectorAll('.blog-post-card');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        const postsPerPage = 5;
+        let currentPage = 1;
+
+        function displayPage(page) {
+            const start = (page - 1) * postsPerPage;
+            const end = start + postsPerPage;
+
+            blogPosts.forEach((post, index) => {
+                if (index >= start && index < end) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+            prevBtn.disabled = page === 1;
+            nextBtn.disabled = end >= blogPosts.length;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                displayPage(currentPage);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentPage * postsPerPage < blogPosts.length) {
+                currentPage++;
+                displayPage(currentPage);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        // Initialize the first page
+        displayPage(currentPage);
+
+        // Hamburger Menu Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        navToggle.addEventListener('change', function() {
+            if (this.checked) {
+                navLinks.style.maxHeight = navLinks.scrollHeight + 'px';
+            } else {
+                navLinks.style.maxHeight = '0';
+            }
+        });
+    </script>
+</body>
+</html>

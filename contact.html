@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Faithinator Creative Lab</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+        CSS STYLES FOR FAITHINATOR CREATIVE LAB
+        ========================================
+        */
+
+        :root {
+            --bg-color: #0d0d1a;
+            --primary-bg: #1a1a2e;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff41;
+            --glow-color: rgba(0, 255, 65, 0.5);
+            
+            --heading-font: 'Press Start 2P', cursive;
+            --body-font: 'Pixelify Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(26, 26, 46, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 26, 46, 0.8) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--primary-bg);
+            position: relative;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+        
+        .nav-links a:hover::before {
+            content: ">";
+            margin-right: 5px;
+        }
+        
+        /* Mobile Nav Toggle (Hamburger Menu) */
+        #nav-toggle {
+            display: none;
+        }
+        .nav-button-label {
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .nav-button-label .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .nav-button-label .hamburger::before,
+        .nav-button-label .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: transform 0.3s;
+        }
+        .nav-button-label .hamburger::before {
+            top: -8px;
+        }
+        .nav-button-label .hamburger::after {
+            bottom: -8px;
+        }
+
+        /* --- GENERAL SECTION STYLING --- */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+        
+        .section-title::before {
+            content: "// ";
+            opacity: 0.5;
+        }
+        
+        /* New CSS for typewriter effect */
+        .typewriter-text {
+            visibility: hidden; /* Hide all text initially */
+        }
+        .typewriter-text::after {
+            content: '';
+            border-right: .15em solid var(--accent-color);
+            animation: blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent-color); }
+        }
+
+        /* --- SERVICES & PORTFOLIO GRIDS --- */
+        .services-grid, .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        .service-icon {
+            font-family: var(--heading-font);
+            font-size: 3rem; margin-bottom: 1rem; color: var(--accent-color);
+        }
+        
+        .service-card h3 {
+            font-family: var(--heading-font); font-size: 1.2rem; margin-bottom: 1rem;
+        }
+        
+        .service-card.under-construction {
+            opacity: 0.6; border-style: dashed;
+        }
+
+        .status-text {
+            color: var(--accent-color); font-weight: bold; animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; text-shadow: 0 0 5px var(--glow-color);}
+            100% { opacity: 0.5; }
+        }
+
+        .portfolio-item {
+            background-color: var(--primary-bg);
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 1px solid var(--primary-bg);
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        
+        .portfolio-item:hover { border-color: var(--accent-color); }
+        
+        .portfolio-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 255, 65, 0.8);
+            color: var(--bg-color);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; transform: scale(1.1); transition: all 0.4s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; transform: scale(1); }
+        
+        .portfolio-overlay h3 { font-family: var(--heading-font); font-size: 1.2rem; }
+        
+        /* --- CONTACT PAGE STYLING --- */
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: var(--primary-bg);
+            padding: 2rem;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .contact-form label {
+            font-family: var(--heading-font);
+            color: var(--accent-color);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--text-color);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            border-radius: 0;
+        }
+        
+        .contact-form textarea {
+            resize: vertical;
+        }
+        
+        .contact-info-card {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--accent-color);
+            padding: 2rem;
+        }
+        
+        .contact-info-card ul {
+            list-style-type: none;
+        }
+        
+        .contact-info-card li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info-card h3 {
+            font-family: var(--heading-font);
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .contact-icon {
+            font-family: var(--heading-font);
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .contact-info-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        
+        .contact-info-card a:hover {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+        
+        /* --- CALL TO ACTION --- */
+        .cta-section { text-align: center; }
+        
+        .cta-button {
+            display: inline-block; font-family: var(--heading-font);
+            background-color: var(--accent-color); color: var(--bg-color);
+            padding: 1rem 2rem; text-decoration: none; font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .cta-button:hover { background-color: transparent; color: var(--accent-color); }
+        
+        .cta-button::before { content: "[ "; }
+        .cta-button::after { content: " ]"; }
+        
+        /* --- FOOTER --- */
+        .main-footer {
+            text-align: center; padding: 2rem 0; margin-top: 4rem;
+            border-top: 1px solid var(--primary-bg); font-size: 0.9rem; opacity: 0.7;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - MEDIA QUERIES
+           ========================================
+        */
+        @media (max-width: 768px) {
+            /* --- Responsive Navigation --- */
+            .nav-button-label {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-bg);
+                border-bottom: 1px solid var(--accent-color);
+                
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+            }
+            
+            #nav-toggle:checked ~ .nav-links {
+                max-height: 300px;
+            }
+
+            /* --- General Spacing and Fonts --- */
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo">FT_CL</a>
+                
+                <input type="checkbox" id="nav-toggle">
+                <label for="nav-toggle" class="nav-button-label">
+                    <span class="hamburger"></span>
+                </label>
+                
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html" class="active">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title typewriter-text">CONNECTING...</h2>
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <form action="submit_form.php" method="post" class="contact-form">
+                            <label for="name" class="typewriter-text">Name:</label>
+                            <input type="text" id="name" name="name" required>
+
+                            <label for="email" class="typewriter-text">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            
+                            <label for="message" class="typewriter-text">Message:</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+
+                            <button type="submit" class="cta-button">SEND MESSAGE</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <h3 class="typewriter-text">Direct Transmission</h3>
+                        <ul>
+                            <li class="typewriter-text">
+                                <div class="contact-icon">[EMAIL]</div>
+                                <a href="mailto:faithinator.faithanic@gmail.com"><p>faithinator.faithanic@gmail.com</p></a>
+                            </li>
+                            <li class="typewriter-text">
+                                <div class="contact-icon">[FB]</div>
+                                <a href="https://www.facebook.com/profile.php?id=61578960194148"><p>@faith toluwanimi</p></a>
+                            </li>
+                            <li class="typewriter-text">
+                              <div class="contact-icon">[WHATSAPP]</div>
+                                 <a href="https://wa.me/+2347046111023"> <p>+2347046111023</p></a>
+                            </li>
+                             <li class="typewriter-text">
+                                <div class="contact-icon">[TELEGRAM]</div>
+                               <a href="T.me/07046111023"> <p>+2347046111023</p></a>
+                            </li>
+                             <li class="typewriter-text">
+                                <div class="contact-icon">[CALL]</div>
+                                <a href="tel:+2347046111023"><p>+2347046111023</p></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="typewriter-text">&copy; 2025 Faithinator Creative Lab. All Rights Reserved. | Designed by Faith Tolu in Ogbomoso, Nigeria.</p>
+        </div>
+    </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const textElements = document.querySelectorAll('.typewriter-text');
+        const typingSpeed = 25; // Speed in milliseconds (lower is faster)
+
+        function typeInSequence(elements, index) {
+            if (index < elements.length) {
+                const element = elements[index];
+                const originalText = element.textContent;
+
+                // Handle nested links within the list items
+                if (element.tagName === 'LI') {
+                    const icon = element.querySelector('.contact-icon');
+                    const paragraph = element.querySelector('p');
+                    
+                    if (icon) {
+                        typeElementContent(icon, () => {
+                            if (paragraph) {
+                                typeElementContent(paragraph, () => {
+                                    typeInSequence(elements, index + 1);
+                                });
+                            } else {
+                                typeInSequence(elements, index + 1);
+                            }
+                        });
+                    } else if (paragraph) {
+                         typeElementContent(paragraph, () => {
+                            typeInSequence(elements, index + 1);
+                         });
+                    } else {
+                         typeInSequence(elements, index + 1);
+                    }
+                } else {
+                    typeElementContent(element, () => {
+                        typeInSequence(elements, index + 1);
+                    });
+                }
+            }
+        }
+        
+        function typeElementContent(element, callback) {
+            const originalContent = element.innerHTML;
+            element.innerHTML = '';
+            element.style.visibility = 'visible';
+
+            let charIndex = 0;
+            function typeNextChar() {
+                if (charIndex < originalContent.length) {
+                    element.innerHTML += originalContent.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeNextChar, typingSpeed);
+                } else {
+                    if (callback) callback();
+                }
+            }
+            typeNextChar();
+        }
+
+        // Add a class for the blinking cursor to elements
+        textElements.forEach(el => el.classList.add('has-cursor'));
+        
+        typeInSequence(textElements, 0);
+    });
+</script>
+
+</body>
+</html>

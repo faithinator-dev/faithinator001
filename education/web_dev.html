@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development - Code with Faith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color-start: #ffffff;
+            --bg-color-end: #f0f8ff;
+            --text-color: #333;
+            --accent-color: #3498db;
+            --accent-glow: rgba(52, 152, 219, 0.5);
+            --border-color: #e0e0e0;
+            --card-bg: #fff;
+            
+            --heading-font: 'Roboto', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--bg-color-start), var(--bg-color-end));
+            background-size: 200% 200%;
+            animation: background-move 10s ease infinite;
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes background-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header & Navigation --- */
+        .edu-header {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .edu-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edu-logo {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .edu-nav-links ul {
+            display: flex;
+            list-style-type: none;
+            gap: 2rem;
+        }
+
+        .edu-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .edu-nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Main Content Sections --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        .course-page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .course-page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-card h3 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .module-card p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-card ul {
+            font-size: 0.9rem;
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .module-card li::before {
+            content: "✓";
+            color: var(--accent-color);
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .start-btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .start-btn:hover {
+            background-color: #2980b9;
+        }
+
+        /* --- Footer --- */
+        .edu-footer {
+            text-align: center; 
+            padding: 2rem 0; 
+            border-top: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            margin-top: auto; 
+        }
+
+        /* Modal for simulating redirection */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* ========================================
+          RESPONSIVE DESIGN
+          ========================================
+        */
+        @media (max-width: 768px) {
+            .edu-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .edu-nav-links ul {
+                gap: 1rem;
+            }
+            .course-page-header h1 {
+                font-size: 2rem;
+            }
+            .course-page-header p {
+                font-size: 1rem;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="edu-header">
+        <div class="container">
+            <nav class="edu-nav">
+                <a href="#" class="edu-logo">CODE WITH FAITH</a>
+                <div class="edu-nav-links">
+                    <ul>
+                        <li><a href="#intro">Course Intro</a></li>
+                        <li><a href="#modules">Modules</a></li>
+                        <li><a href="#">Back to Lab</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="intro">
+            <div class="container">
+                <div class="course-page-header">
+                    <h1>Web Development Mastery</h1>
+                    <p>Go from a total beginner to a professional web developer by mastering modern tools, techniques, and languages of the web.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="modules">
+            <div class="container">
+                <h2 class="section-title">COURSE MODULES</h2>
+                <div class="modules-grid">
+                    <div class="module-card" onclick="showModuleDetails('Module 1: The Foundation: HTML5')">
+                        <h3>Module 1: The Foundation: HTML5</h3>
+                        <p>Learn the building blocks of the web and how to structure content using semantic HTML.</p>
+                        <ul>
+                            <li>Introduction to HTML and the DOM</li>
+                            <li>Essential Tags: headings, paragraphs, and lists</li>
+                            <li>Working with Images and Hyperlinks</li>
+                            <li>Semantic HTML and Accessibility</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 1: The Foundation: HTML5')">Start Module</a>
+                    </div>
+                    
+                    <div class="module-card" onclick="showModuleDetails('Module 2: Bringing Pages to Life: CSS3')">
+                        <h3>Module 2: Bringing Pages to Life: CSS3</h3>
+                        <p>Master the art of styling and presentation to make your web pages visually appealing.</p>
+                        <ul>
+                            <li>Selectors and the Cascade</li>
+                            <li>The Box Model: Padding, Borders, and Margins</li>
+                            <li>CSS Typography and Color Theory</li>
+                            <li>Working with Backgrounds and Gradients</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 2: Bringing Pages to Life: CSS3')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 3: Responsive Layouts: Flexbox and Grid')">
+                        <h3>Module 3: Responsive Layouts: Flexbox and Grid</h3>
+                        <p>Build flexible and adaptive designs that look great on any device.</p>
+                        <ul>
+                            <li>Flexbox Fundamentals: main and cross axis</li>
+                            <li>Creating a Multi-Column Layout with Flexbox</li>
+                            <li>CSS Grid Fundamentals: rows and columns</li>
+                            <li>Using Media Queries for Different Devices</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 3: Responsive Layouts: Flexbox and Grid')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 4: Interactivity: JavaScript Essentials')">
+                        <h3>Module 4: Interactivity: JavaScript Essentials</h3>
+                        <p>Add dynamic behavior and user interaction to your websites.</p>
+                        <ul>
+                            <li>Variables, Data Types, and Operators</li>
+                            <li>Conditional Statements and Loops</li>
+                            <li>Functions, Scope, and Closures</li>
+                            <li>Working with the Document Object Model (DOM)</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 4: Interactivity: JavaScript Essentials')">Start Module</a>
+                    </div>
+                    
+                    <div class="module-card" onclick="showModuleDetails('Module 5: Next-Level JS: ES6 and Beyond')">
+                        <h3>Module 5: Next-Level JS: ES6 and Beyond</h3>
+                        <p>Dive into modern JavaScript features that make your code cleaner and more efficient.</p>
+                        <ul>
+                            <li>Arrow Functions and Template Literals</li>
+                            <li>let, const, and var Explained</li>
+                            <li>Destructuring and Spread/Rest Operators</li>
+                            <li>Asynchronous JavaScript with Async/Await</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 5: Next-Level JS: ES6 and Beyond')">Start Module</a>
+                    </div>
+                    
+                    <div class="module-card" onclick="showModuleDetails('Module 6: Capstone Project I: A Personal Portfolio')">
+                        <h3>Module 6: Capstone Project I: A Personal Portfolio</h3>
+                        <p>Apply everything you've learned so far to build a professional-looking personal portfolio website.</p>
+                        <ul>
+                            <li>Project Planning and Design</li>
+                            <li>Structuring HTML for a Multi-Page Site</li>
+                            <li>Crafting a Responsive, Polished Design</li>
+                            <li>Adding Interactive Elements with JavaScript</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 6: Capstone Project I: A Personal Portfolio')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 7: Tools of the Trade: Node.js and npm')">
+                        <h3>Module 7: Tools of the Trade: Node.js and npm</h3>
+                        <p>Understand the modern development environment and how to manage project dependencies.</p>
+                        <ul>
+                            <li>What is Node.js and npm?</li>
+                            <li>Initializing a Project with `npm init`</li>
+                            <li>Installing and Managing Packages</li>
+                            <li>Using Build Tools like Vite and Webpack</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 7: Tools of the Trade: Node.js and npm')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 8: Modern Front-End: Introduction to React')">
+                        <h3>Module 8: Modern Front-End: Introduction to React</h3>
+                        <p>Learn to build complex, single-page applications with the most popular JavaScript framework.</p>
+                        <ul>
+                            <li>What is a Framework? The React Philosophy</li>
+                            <li>JSX and Components</li>
+                            <li>State and Props</li>
+                            <li>Handling Events and State Updates in React</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 8: Modern Front-End: Introduction to React')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 9: Advanced State Management')">
+                        <h3>Module 9: Advanced State Management</h3>
+                        <p>Manage complex application state using modern patterns and tools.</p>
+                        <ul>
+                            <li>The Context API for Global State</li>
+                            <li>Working with the `useReducer` Hook</li>
+                            <li>Introduction to Redux and Zustand</li>
+                            <li>Managing Data with `React Query` or `SWR`</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 9: Advanced State Management')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 10: Performance: Server-Side Rendering')">
+                        <h3>Module 10: Performance: Server-Side Rendering</h3>
+                        <p>Improve SEO and performance with server-side rendering frameworks like Next.js.</p>
+                        <ul>
+                            <li>Client-Side vs. Server-Side Rendering</li>
+                            <li>Introduction to Next.js</li>
+                            <li>Building Pages with the App Router</li>
+                            <li>Data Fetching in Next.js</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 10: Performance: Server-Side Rendering')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 11: The Server: Node.js and Express')">
+                        <h3>Module 11: The Server: Node.js and Express</h3>
+                        <p>Learn how to build a simple server and create your own APIs.</p>
+                        <ul>
+                            <li>What is a Backend?</li>
+                            <li>Setting up a Basic Node.js Server</li>
+                            <li>Introduction to the Express Framework</li>
+                            <li>Creating Routes and Handling Requests</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 11: The Server: Node.js and Express')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 12: Data Storage: Databases')">
+                        <h3>Module 12: Data Storage: Databases</h3>
+                        <p>Store and manage application data using a modern NoSQL database.</p>
+                        <ul>
+                            <li>SQL vs. NoSQL: A Comparison</li>
+                            <li>Introduction to MongoDB</li>
+                            <li>Connecting Node.js to a Database</li>
+                            <li>CRUD Operations (Create, Read, Update, Delete)</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 12: Data Storage: Databases')">Start Module</a>
+                    </div>
+                    
+                    <div class="module-card" onclick="showModuleDetails('Module 13: Securing Your App: Authentication and Authorization')">
+                        <h3>Module 13: Securing Your App: Authentication and Authorization</h3>
+                        <p>Learn how to add secure login and user management to your application.</p>
+                        <ul>
+                            <li>What are Authentication and Authorization?</li>
+                            <li>Password Hashing with `bcrypt.js`</li>
+                            <li>JSON Web Tokens (JWT) for Sessions</li>
+                            <li>Protecting API Routes</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 13: Securing Your App: Authentication and Authorization')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 14: Collaboration: Git and GitHub')">
+                        <h3>Module 14: Collaboration: Git and GitHub</h3>
+                        <p>Master version control to track changes and collaborate with other developers.</p>
+                        <ul>
+                            <li>What is Git?</li>
+                            <li>Basic Git Commands (`add`, `commit`, `push`)</li>
+                            <li>Working with Branches</li>
+                            <li>Cloning and Contributing to Projects on GitHub</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 14: Collaboration: Git and GitHub')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 15: Going Live: Deployment')">
+                        <h3>Module 15: Going Live: Deployment</h3>
+                        <p>Learn how to deploy your front-end and back-end applications to the web.</p>
+                        <ul>
+                            <li>Introduction to Hosting Providers (Netlify, Vercel, Render)</li>
+                            <li>Deploying a Static Front-End Site</li>
+                            <li>Deploying a Node.js Backend</li>
+                            <li>Setting up Environment Variables</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 15: Going Live: Deployment')">Start Module</a>
+                    </div>
+
+                    <div class="module-card" onclick="showModuleDetails('Module 16: Capstone Project II: A Full-Stack App')">
+                        <h3>Module 16: Capstone Project II: A Full-Stack App</h3>
+                        <p>Combine all your skills to build a complete full-stack web application.</p>
+                        <ul>
+                            <li>Designing the Application Architecture</li>
+                            <li>Building the Front-End with React</li>
+                            <li>Creating a REST API with Node.js and Express</li>
+                            <li>Connecting the App to a Database</li>
+                        </ul>
+                        <a href="#" class="start-btn" onclick="showModuleDetails('Module 16: Capstone Project II: A Full-Stack App')">Start Module</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2 class="section-title">READY TO START?</h2>
+                <a href="#" class="cta-button" onclick="showContactMessage()">CONTACT ME</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="edu-footer">
+        <div class="container">
+            <p>Code with Faith &copy; 2025. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Message Box Modal -->
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+
+    <script>
+        function showModuleDetails(moduleName) {
+            const modalText = document.getElementById('modal-text');
+            modalText.textContent = `In a real site, this would take you to the page for "${moduleName}".`;
+            document.getElementById('messageModal').style.display = 'flex';
+        }
+
+        function showContactMessage() {
+            const modalText = document.getElementById('modal-text');
+            modalText.textContent = 'In a real site, this would take you to the contact page.';
+            document.getElementById('messageModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('messageModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

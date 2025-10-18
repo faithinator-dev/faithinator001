@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Exam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .main-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 900px;
+            width: 100%;
+            padding: 2rem;
+            text-align: center;
+        }
+        .certificate-card {
+            background-color: #fefefe;
+            border: 4px solid #3182ce;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            max-width: 600px;
+            width: 100%;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .certificate-card::before, .certificate-card::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(49, 130, 206, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+        .certificate-card::before {
+            top: -50px;
+            left: -50px;
+        }
+        .certificate-card::after {
+            bottom: -50px;
+            right: -50px;
+        }
+        .info-form-section, .score-section {
+            display: none;
+        }
+        .question-card {
+            background-color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="exam-section" class="main-card transition-transform duration-500 transform scale-100">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">Final Exam</h1>
+        <p class="text-lg text-gray-600 mb-8">This exam will test your knowledge of all the modules. Good luck!</p>
+        
+        <div class="space-y-6 text-left">
+            <!-- Question 1: Text Input -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">1. What HTML tag is used to create an unordered list?</p>
+                <input type="text" id="q1-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+            
+            <!-- Question 2: Multiple Choice (Radio) -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">2. Which CSS property is used to change the background color of an element?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q2" value="text-color" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">text-color</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q2" value="background-color" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">background-color</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q2" value="color" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">color</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 3: Text Input -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">3. What is the correct way to link an external JavaScript file named "script.js" to an HTML document?</p>
+                <input type="text" id="q3-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 4: Checkbox (Select all) -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">4. Which of the following are valid ways to declare a variable in JavaScript? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q4" value="var" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">var</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q4" value="let" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">let</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q4" value="const" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">const</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q4" value="variable" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">variable</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Questions 5-30 will be a mix of the above types. -->
+            <!-- Question 5: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">5. What CSS selector is used to style an element with a specific class, for example, a class named `container`?</p>
+                <input type="text" id="q5-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 6: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">6. Which of the following is an example of an "event" in JavaScript?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q6" value="document" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">document</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q6" value="click" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">click</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q6" value="function" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">function</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 7: Code Completion -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">7. Fill in the blank to complete the HTML tag for an image:<br/>`&lt;img src="path/to/image.jpg" _____="Image description"&gt;`</p>
+                <input type="text" id="q7-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 8: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">8. What is the purpose of the `&lt;head&gt;` section in an HTML document?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q8" value="visible content" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">To contain all the visible content of the page</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q8" value="metadata" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">To contain metadata about the page</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 9: Checkbox -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">9. Which of the following are CSS box model properties? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q9" value="padding" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">padding</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q9" value="margin" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">margin</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q9" value="font-size" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">font-size</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q9" value="border" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">border</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 10: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">10. In JavaScript, what is the operator used for strict equality (checking both value and type)?</p>
+                <input type="text" id="q10-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 11: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">11. What does the acronym DOM stand for?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q11" value="Document Object Model" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Document Object Model</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q11" value="Data Object Model" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Data Object Model</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 12: Code Completion -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">12. Complete the CSS to make a div's width responsive to the viewport: `div { width: 50____; }`</p>
+                <input type="text" id="q12-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 13: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">13. Which HTML tag is used to define a hyperlink?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q13" value="a" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;a&gt;</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q13" value="link" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;link&gt;</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 14: Checkbox -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">14. What are some of the benefits of using a Single-Page Application (SPA)? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q14" value="faster" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">Faster user experience</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q14" value="better SEO" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">Better SEO out of the box</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q14" value="dynamic content" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">Dynamic content without full page reloads</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 15: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">15. What is the JavaScript keyword used to declare a variable with block scope that can be reassigned?</p>
+                <input type="text" id="q15-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 16: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">16. What is the standard practice for making an API call from JavaScript?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q16" value="fetch" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Using the Fetch API</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q16" value="dom" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Using DOM manipulation</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 17: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">17. In the CSS Box Model, what is the space between the content and the border?</p>
+                <input type="text" id="q17-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 18: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">18. Which of these is a semantic HTML tag?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q18" value="div" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;div&gt;</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q18" value="span" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;span&gt;</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q18" value="nav" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;nav&gt;</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 19: Checkbox -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">19. Which of the following are valid CSS units? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q19" value="px" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">px</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q19" value="em" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">em</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q19" value="rem" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">rem</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q19" value="percent" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">percent</span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Question 20: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">20. What JavaScript keyword is used to handle asynchronous operations that may fail?</p>
+                <input type="text" id="q20-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 21: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">21. What is the purpose of the `alt` attribute in an `&lt;img&gt;` tag?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q21" value="alternative text" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">To provide alternative text for the image</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q21" value="align image" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">To align the image on the page</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 22: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">22. Which CSS property is used to control the spacing between letters?</p>
+                <input type="text" id="q22-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 23: Checkbox -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">23. In JavaScript, which methods are used to get an element from the DOM? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q23" value="getElementById" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">getElementById()</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q23" value="querySelector" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">querySelector()</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q23" value="getElementByClass" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">getElementByClass()</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 24: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">24. What is the main benefit of using a JavaScript framework like React or Vue?</p>
+                <input type="text" id="q24-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 25: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">25. Which HTML tag is used for the largest heading?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q25" value="h1" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;h1&gt;</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q25" value="h6" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">&lt;h6&gt;</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 26: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">26. In CSS, what does `margin: 0 auto;` do for a block-level element?</p>
+                <input type="text" id="q26-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 27: Checkbox -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">27. Which of the following are primitive data types in JavaScript? (Select all that apply)</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q27" value="string" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">string</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q27" value="object" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">object</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q27" value="boolean" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">boolean</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="q27" value="number" class="form-checkbox text-blue-600">
+                        <span class="ml-2 text-gray-700">number</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 28: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">28. What does `CSS` stand for?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q28" value="Cascading Style Sheets" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Cascading Style Sheets</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q28" value="Creative Style Sheets" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">Creative Style Sheets</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Question 29: Text -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">29. Fill in the blank to log a message to the console: `console.____("Hello World");`</p>
+                <input type="text" id="q29-answer" class="w-full p-2 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer...">
+            </div>
+
+            <!-- Question 30: Radio -->
+            <div class="border p-4 rounded-lg question-card">
+                <p class="font-semibold text-gray-800 mb-2">30. What is a key benefit of using the `const` keyword in JavaScript?</p>
+                <div class="flex flex-col space-y-2 mt-2">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q30" value="reassignable" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">It allows the variable to be reassigned later.</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="q30" value="constant" class="form-radio text-blue-600">
+                        <span class="ml-2 text-gray-700">It prevents the variable from being reassigned.</span>
+                    </label>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="mt-8">
+            <button onclick="submitExam()" class="w-full py-3 px-6 bg-blue-500 text-white font-semibold rounded-full text-lg shadow-lg hover:bg-blue-600 transition-colors">
+                Submit Exam
+            </button>
+            <p id="exam-message" class="mt-4 text-sm font-semibold"></p>
+        </div>
+    </div>
+
+    <!-- Score Section -->
+    <div id="score-section" class="score-section main-card mt-8">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Exam Results</h2>
+        <p class="text-xl text-gray-600 mb-4">Your final score is: <span id="final-score" class="font-bold text-blue-600">0/30</span></p>
+        <p id="pass-message" class="text-lg font-semibold mb-6"></p>
+        <button onclick="showInfoForm()" id="continue-btn" class="hidden w-full py-3 px-6 bg-green-500 text-white font-semibold rounded-full text-lg shadow-lg hover:bg-green-600 transition-colors">
+            Continue to Certificate
+        </button>
+    </div>
+    
+    <!-- Info Form Section -->
+    <div id="info-form-section" class="info-form-section main-card mt-8">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Personal Information</h2>
+        <p class="text-gray-600 mb-6">Please fill out your details to generate your certificate and send your results.</p>
+        
+        <div class="space-y-4 text-left">
+            <input type="text" id="name-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Full Name">
+            <input type="text" id="address-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Address">
+            <input type="text" id="nationality-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Nationality">
+            <input type="email" id="email-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email">
+            <input type="tel" id="phone-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Phone Number">
+            <input type="text" id="occupation-input" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Occupation">
+        </div>
+
+        <div class="mt-8">
+            <button onclick="sendEmail()" class="w-full py-3 px-6 bg-blue-500 text-white font-semibold rounded-full text-lg shadow-lg hover:bg-blue-600 transition-colors">
+                Generate Certificate and Send Email
+            </button>
+            <p class="mt-2 text-sm text-gray-600">
+                (This will open your email client. You must press "Send" to complete the submission.)
+            </p>
+        </div>
+    </div>
+    
+    <div id="certificate-section" class="main-card hidden transition-transform duration-500 transform scale-0 mt-8">
+        <div class="certificate-card">
+            <div class="relative z-10">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-blue-700 mb-2">Certificate of Completion</h1>
+                <p class="text-sm text-gray-500 mb-4">This acknowledges that</p>
+                <h2 id="student-name" class="text-4xl md:text-5xl font-bold text-gray-900 mb-6"></h2>
+                <p class="text-lg text-gray-600">has successfully completed the</p>
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Web Development Mastery Course</h3>
+                <p class="text-sm text-gray-500">Issued on <span id="issue-date"></span></p>
+                <div class="mt-8">
+                    <img src="https://placehold.co/100x100/3182ce/ffffff?text=gemini" alt="Faith logo" class="mx-auto" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const examQuestions = [
+            // Text Input Questions
+            { id: 'q1', type: 'text', answer: ['ul', 'unordered list'] },
+            { id: 'q3', type: 'text', answer: ['<script src="script.js">', '<script src="script.js"></script>'] },
+            { id: 'q5', type: 'text', answer: ['.container', '.'] },
+            { id: 'q7', type: 'text', answer: ['alt'] },
+            { id: 'q10', type: 'text', answer: ['===', 'triple equals'] },
+            { id: 'q12', type: 'text', answer: ['vw'] },
+            { id: 'q15', type: 'text', answer: ['let'] },
+            { id: 'q17', type: 'text', answer: ['padding'] },
+            { id: 'q20', type: 'text', answer: ['try...catch', 'try', 'catch'] },
+            { id: 'q22', type: 'text', answer: ['letter-spacing'] },
+            { id: 'q24', type: 'text', answer: ['component-based development', 'state management', 'reusability', 'easier to manage state', 'efficient ui updates'] },
+            { id: 'q26', type: 'text', answer: ['centers', 'center the element horizontally'] },
+            { id: 'q29', type: 'text', answer: ['log'] },
+
+            // Radio Questions
+            { id: 'q2', type: 'radio', answer: 'background-color' },
+            { id: 'q6', type: 'radio', answer: 'click' },
+            { id: 'q8', type: 'radio', answer: 'metadata' },
+            { id: 'q11', type: 'radio', answer: 'Document Object Model' },
+            { id: 'q13', type: 'radio', answer: 'a' },
+            { id: 'q16', type: 'radio', answer: 'fetch' },
+            { id: 'q18', type: 'radio', answer: 'nav' },
+            { id: 'q21', type: 'radio', answer: 'alternative text' },
+            { id: 'q25', type: 'radio', answer: 'h1' },
+            { id: 'q28', type: 'radio', answer: 'Cascading Style Sheets' },
+            { id: 'q30', type: 'radio', answer: 'constant' },
+            
+            // Checkbox Questions
+            { id: 'q4', type: 'checkbox', answer: ['var', 'let', 'const'] },
+            { id: 'q9', type: 'checkbox', answer: ['padding', 'margin', 'border'] },
+            { id: 'q14', type: 'checkbox', answer: ['faster', 'dynamic content'] },
+            { id: 'q19', type: 'checkbox', answer: ['px', 'em', 'rem'] },
+            { id: 'q23', type: 'checkbox', answer: ['getElementById', 'querySelector'] },
+            { id: 'q27', type: 'checkbox', answer: ['string', 'boolean', 'number'] }
+        ];
+
+        let finalScore = 0;
+
+        function submitExam() {
+            finalScore = 0;
+            
+            examQuestions.forEach(q => {
+                let isCorrect = false;
+
+                if (q.type === 'text') {
+                    const answer = document.getElementById(`${q.id}-answer`).value.trim().toLowerCase();
+                    isCorrect = q.answer.some(correctAns => answer.includes(correctAns));
+                } else if (q.type === 'radio') {
+                    const selected = document.querySelector(`input[name="${q.id}"]:checked`);
+                    isCorrect = selected && selected.value.toLowerCase() === q.answer.toLowerCase();
+                } else if (q.type === 'checkbox') {
+                    const selectedAnswers = Array.from(document.querySelectorAll(`input[name="${q.id}"]:checked`)).map(cb => cb.value);
+                    const correctAnswers = q.answer;
+                    // Check if all correct answers are selected and no incorrect ones are.
+                    isCorrect = selectedAnswers.length === correctAnswers.length &&
+                                correctAnswers.every(ans => selectedAnswers.includes(ans));
+                }
+                
+                if (isCorrect) {
+                    finalScore++;
+                }
+            });
+
+            document.getElementById('final-score').textContent = `${finalScore}/30`;
+            
+            const passMessage = document.getElementById('pass-message');
+            const continueBtn = document.getElementById('continue-btn');
+
+            if (finalScore >= 24) { // 80% passing score
+                passMessage.textContent = "Congratulations, you passed!";
+                passMessage.style.color = "#10b981";
+                continueBtn.classList.remove('hidden');
+            } else {
+                passMessage.textContent = "You did not pass. Please review the material and try again.";
+                passMessage.style.color = "#ef4444";
+                continueBtn.classList.add('hidden');
+            }
+            
+            document.getElementById('score-section').style.display = 'block';
+        }
+
+        function showInfoForm() {
+            document.getElementById('exam-section').style.display = 'none';
+            document.getElementById('score-section').style.display = 'none';
+            document.getElementById('info-form-section').style.display = 'block';
+        }
+
+        function sendEmail() {
+            const name = document.getElementById('name-input').value.trim();
+            const address = document.getElementById('address-input').value.trim();
+            const nationality = document.getElementById('nationality-input').value.trim();
+            const email = document.getElementById('email-input').value.trim();
+            const phone = document.getElementById('phone-input').value.trim();
+            const occupation = document.getElementById('occupation-input').value.trim();
+
+            if (!name || !email) {
+                // Using a non-intrusive message instead of alert
+                const infoForm = document.getElementById('info-form-section');
+                let message = infoForm.querySelector('#info-message');
+                if (!message) {
+                    message = document.createElement('p');
+                    message.id = 'info-message';
+                    message.className = 'mt-2 text-sm text-red-500 font-semibold';
+                    infoForm.appendChild(message);
+                }
+                message.textContent = "Please fill in at least your name and email.";
+                return;
+            }
+
+            const subject = encodeURIComponent("Web Development Mastery Course - Exam Results");
+            const body = encodeURIComponent(
+`Congratulations on completing the Web Development Mastery Course!
+
+Here are my results:
+Score: ${finalScore}/30
+Name: ${name}
+Address: ${address}
+Nationality: ${nationality}
+Email: ${email}
+Phone Number: ${phone}
+Occupation: ${occupation}
+`);
+            
+            window.location.href = `mailto:Faithinator.faithanic@gmail.com?subject=${subject}&body=${body}`;
+            
+            setTimeout(() => {
+                document.getElementById('info-form-section').style.display = 'none';
+                document.getElementById('student-name').textContent = name;
+                const date = new Date();
+                document.getElementById('issue-date').textContent = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                
+                const certificateSection = document.getElementById('certificate-section');
+                certificateSection.classList.remove('hidden', 'scale-0');
+                certificateSection.classList.add('scale-100');
+            }, 500);
+        }
+    </script>
+</body>
+</html>

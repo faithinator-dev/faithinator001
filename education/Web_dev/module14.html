@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 14 - Client-Side Routing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1a202c;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .prose h1, .prose h2, .prose h3 {
+            color: #3182ce;
+        }
+        .lesson-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .content-section {
+            display: none;
+        }
+        .content-section.active {
+            display: block;
+        }
+        .nav-link {
+            transition: all 0.2s ease-in-out;
+        }
+        .nav-link.active {
+            background-color: #3182ce;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .lesson-button {
+            transition: all 0.2s ease-in-out;
+            transform: translateY(0);
+        }
+        .lesson-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <a href="#" class="text-xl font-bold text-gray-900">Module 14: Client-Side Routing</a>
+            <nav class="flex space-x-2 sm:space-x-4">
+                <a href="#home" id="home-link" class="nav-link px-4 py-2 rounded-full font-semibold bg-white text-gray-700 hover:bg-gray-100">Home</a>
+                <a href="#about" id="about-link" class="nav-link px-4 py-2 rounded-full font-semibold bg-white text-gray-700 hover:bg-gray-100">About</a>
+                <a href="#contact" id="contact-link" class="nav-link px-4 py-2 rounded-full font-semibold bg-white text-gray-700 hover:bg-gray-100">Contact</a>
+            </nav>
+            <a id="next-module-btn" href="module15.html" class="px-5 py-2 bg-gray-400 text-white font-semibold rounded-full shadow-lg cursor-not-allowed">Next Module &rarr;</a>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-10 md:py-16">
+        <div class="prose max-w-none">
+            <h1 class="text-center text-4xl font-extrabold mb-10 text-gray-900">Building a Single-Page App</h1>
+
+            <!-- Home Section -->
+            <section id="home-page" class="content-section lesson-card p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-4">Welcome to our SPA!</h2>
+                <p class="text-gray-700 mb-4">This is the home page. Notice how the URL changes in your browser's address bar when you click the navigation links, but the page doesn't reload. This is a simple form of client-side routing, where JavaScript handles the "navigation" within a single page.</p>
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 mb-6">
+                    <p class="text-blue-800 font-semibold">
+                        A traditional website (Multi-Page Application) would reload the entire page. A Single-Page Application (SPA) uses JavaScript to dynamically change the content, making it feel much faster and more fluid.
+                    </p>
+                </div>
+                <button onclick="unlockNextModule()" class="lesson-button mt-6 w-full md:w-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition-colors">
+                    Continue
+                </button>
+            </section>
+            
+            <!-- About Section -->
+            <section id="about-page" class="content-section lesson-card p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-4">About Us</h2>
+                <p class="text-gray-700 mb-4">We are committed to teaching modern web development using fundamental building blocks. This course is designed to empower you with the skills to build any kind of web application.</p>
+                <p class="text-gray-700">Client-side routing is a key part of that, as it provides a better user experience by avoiding unnecessary page reloads.</p>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact-page" class="content-section lesson-card p-8 mb-12">
+                <h2 class="text-3xl font-bold mb-4">Contact Us</h2>
+                <p class="text-gray-700 mb-4">Feel free to reach out to us with any questions. We are always here to help you on your learning journey!</p>
+                <p class="text-gray-700">This contact page is a great example of how simple it is to add new "pages" to your SPA without complex server-side logic.</p>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-inner mt-auto">
+        <div class="container mx-auto px-6 py-6 text-center text-sm text-gray-500">
+            &copy; 2025 WebDev Mastery. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const nextModuleBtn = document.getElementById('next-module-btn');
+
+        function showPage(pageId) {
+            // Hide all content sections
+            contentSections.forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show the requested content section
+            const activeSection = document.getElementById(pageId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+            }
+            // Update active link styling
+            navLinks.forEach(link => {
+                link.classList.remove('active', 'bg-blue-500', 'text-white');
+                link.classList.add('bg-white', 'text-gray-700', 'hover:bg-gray-100');
+            });
+            const activeLink = document.getElementById(`${pageId.replace('-page', '')}-link`);
+            if (activeLink) {
+                activeLink.classList.add('active', 'bg-blue-500', 'text-white');
+                activeLink.classList.remove('bg-white', 'text-gray-700');
+            }
+        }
+
+        function handleRouting() {
+            const hash = window.location.hash.substring(1) || 'home';
+            showPage(`${hash}-page`);
+        }
+        
+        // Listen for URL hash changes and initial page load
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
+
+        function unlockNextModule() {
+            nextModuleBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+            nextModuleBtn.classList.add('bg-blue-500', 'hover:bg-blue-600', 'transition-colors');
+            nextModuleBtn.style.cursor = 'pointer';
+        }
+    </script>
+</body>
+</html>

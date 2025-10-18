@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development - Faithinator Creative Lab</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ========================================
+        CSS STYLES FOR FAITHINATOR CREATIVE LAB
+        ========================================
+        */
+
+        :root {
+            --bg-color: #0c0c1a;
+            --primary-bg: #1a1a2e;
+            --text-color: #ffffff;
+            --accent-color: #008cff;
+            --glow-color: rgba(0, 140, 255, 0.5);
+            
+            --heading-font: 'Press Start 2P', cursive;
+            --body-font: 'Pixelify Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            background-image: 
+                linear-gradient(rgba(26, 26, 46, 0.8) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(26, 26, 46, 0.8) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        .main-header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--primary-bg);
+            position: relative;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--glow-color);
+        }
+        
+        .nav-links a:hover::before {
+            content: ">";
+            margin-right: 5px;
+        }
+        
+        /* Mobile Nav Toggle (Hamburger Menu) */
+        #nav-toggle {
+            display: none;
+        }
+        .nav-button-label {
+            display: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .nav-button-label .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            position: relative;
+            transition: background-color 0.2s;
+        }
+        .nav-button-label .hamburger::before,
+        .nav-button-label .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            transition: transform 0.3s;
+        }
+        .nav-button-label .hamburger::before {
+            top: -8px;
+        }
+        .nav-button-label .hamburger::after {
+            bottom: -8px;
+        }
+
+        /* --- GENERAL SECTION STYLING --- */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-family: var(--heading-font);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+        
+        .section-title::before {
+            content: "// ";
+            opacity: 0.5;
+        }
+        
+        /* New fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        .fade-in-1 { animation-delay: 0.5s; }
+        .fade-in-2 { animation-delay: 1.0s; }
+        .fade-in-3 { animation-delay: 1.5s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- WEB DEVELOPMENT PAGE STYLES --- */
+        .web-projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-folder {
+            background-color: var(--primary-bg);
+            border: 1px solid var(--accent-color);
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-folder h3 {
+            font-family: var(--heading-font);
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        .project-folder p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* --- CALL TO ACTION --- */
+        .cta-section { text-align: center; }
+        
+        .cta-button {
+            display: inline-block; font-family: var(--heading-font);
+            background-color: var(--accent-color); color: var(--bg-color);
+            padding: 1rem 2rem; text-decoration: none; font-size: 1.2rem;
+            border: 2px solid var(--accent-color);
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .cta-button:hover { background-color: transparent; color: var(--accent-color); }
+        
+        .cta-button::before { content: "[ "; }
+        .cta-button::after { content: " ]"; }
+        
+        /* --- FOOTER --- */
+        .main-footer {
+            text-align: center; padding: 2rem 0; margin-top: 4rem;
+            border-top: 1px solid var(--primary-bg); font-size: 0.9rem; opacity: 0.7;
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN - MEDIA QUERIES
+           ========================================
+        */
+        @media (max-width: 768px) {
+            /* --- Responsive Navigation --- */
+            .nav-button-label {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-bg);
+                border-bottom: 1px solid var(--accent-color);
+                
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease-out;
+            }
+
+            .nav-links ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+            }
+
+            .nav-links li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+            }
+            
+            #nav-toggle:checked ~ .nav-links {
+                max-height: 300px;
+            }
+            
+            /* --- General Spacing and Fonts --- */
+            .section {
+                padding: 4rem 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <a href="index.html" class="logo">FT_CL</a>
+                
+                <input type="checkbox" id="nav-toggle">
+                <label for="nav-toggle" class="nav-button-label">
+                    <span class="hamburger"></span>
+                </label>
+                
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title fade-in fade-in-1">PROJECT_FAITH_DEV</h2>
+                <p class="fade-in fade-in-2">This project is a dedicated portal showcasing my skills in **Web Development**. It's a comprehensive digital space that highlights personal and collaborative projects, detailing the technologies used and the solutions implemented.</p>
+                <div class="web-projects-grid">
+                    <div class="project-folder fade-in fade-in-3">
+                        <h3>CASE_STUDIES</h3>
+                        <p>Explore detailed breakdowns of past projects, from concept to launch, and understand the problem-solving process.</p>
+                    </div>
+                    <div class="project-folder fade-in fade-in-3">
+                        <h3>TECH_STACK</h3>
+                        <p>A list of the programming languages, frameworks, and libraries I specialize in for front-end and back-end development.</p>
+                    </div>
+                    <div class="project-folder fade-in fade-in-3">
+                        <h3>GITHUB_LINKS</h3>
+                        <p>Direct links to the GitHub repositories of my public projects, where you can inspect the code firsthand.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cta" class="section cta-section">
+            <div class="container">
+                <h2 class="section-title fade-in fade-in-1">Ready to Build Your Digital Presence?</h2>
+                <a href="contact.html" class="cta-button">CONNECT NOW</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p class="fade-in fade-in-2">&copy; 2025 Faithinator Creative Lab. All Rights Reserved. | Designed by Faith Tolu in Ogbomoso, Nigeria.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

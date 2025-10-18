@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graphic Design - Code with Faith</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color-start: #ffffff;
+            --bg-color-end: #f0f8ff;
+            --text-color: #333;
+            --accent-color: #3498db;
+            --accent-glow: rgba(52, 152, 219, 0.5);
+            --border-color: #e0e0e0;
+            --card-bg: #fff;
+            
+            --heading-font: 'Roboto', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(45deg, var(--bg-color-start), var(--bg-color-end));
+            background-size: 200% 200%;
+            animation: background-move 10s ease infinite;
+            color: var(--text-color);
+            font-family: var(--body-font);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @keyframes background-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header & Navigation --- */
+        .edu-header {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .edu-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .edu-logo {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .edu-nav-links ul {
+            display: flex;
+            list-style-type: none;
+            gap: 2rem;
+        }
+
+        .edu-nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+        
+        .edu-nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Main Content Sections --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        .course-page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .course-page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .course-page-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .module-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .module-card h3 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .module-card p {
+            font-size: 0.9rem;
+        }
+
+        /* --- Footer --- */
+        .edu-footer {
+            text-align: center; 
+            padding: 2rem 0; 
+            border-top: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            margin-top: auto; 
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ========================================
+        */
+        @media (max-width: 768px) {
+            .edu-nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .edu-nav-links ul {
+                gap: 1rem;
+            }
+            .course-page-header h1 {
+                font-size: 2rem;
+            }
+            .course-page-header p {
+                font-size: 1rem;
+            }
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="edu-header">
+        <div class="container">
+            <nav class="edu-nav">
+                <a href="index.html" class="edu-logo">CODE WITH FAITH</a>
+                <div class="edu-nav-links">
+                    <ul>
+                        <li><a href="#intro">Course Intro</a></li>
+                        <li><a href="#modules">Modules</a></li>
+                        <li><a href="../index.html">Back to Lab</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="intro">
+            <div class="container">
+                <div class="course-page-header">
+                    <h1>Graphic Design Proficiency</h1>
+                    <p>Learn the fundamental principles of design and master the tools to create stunning logos, brand identities, and visual assets for any project.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="modules">
+            <div class="container">
+                <h2 class="section-title">COURSE MODULES</h2>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <h3>Module 1: Design Principles</h3>
+                        <p>Understand the core elements of design, including color theory, typography, and composition. Build a strong foundation for all your creative work.</p>
+                    </div>
+                    
+                    <div class="module-card">
+                        <h3>Module 2: Mastering Design Software</h3>
+                        <p>Get hands-on training with industry-standard software like Adobe Photoshop, Illustrator, and InDesign to bring your ideas to life.</p>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Module 3: Logo & Branding</h3>
+                        <p>Learn the process of creating memorable logos and complete brand identities that help businesses stand out from the crowd.</p>
+                    </div>
+
+                    <div class="module-card">
+                        <h3>Module 4: Marketing Materials</h3>
+                        <p>Design a variety of professional marketing materials, from flyers and social media graphics to presentations and print layouts.</p>
+                    </div>
+                    
+                    <div class="module-card">
+                        <h3>Module 5: UI/UX Fundamentals</h3>
+                        <p>Explore the basics of user interface (UI) and user experience (UX) design to create intuitive and engaging digital products.</p>
+                    </div>
+                    
+                    <div class="module-card">
+                        <h3>Module 6: Building Your Portfolio</h3>
+                        <p>Showcase your work and attract clients by creating a professional, eye-catching portfolio of your best graphic design projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cta" class="cta-section">
+            <div class="container">
+                <h2 class="section-title">READY TO START?</h2>
+                <a href="../contact.html" class="cta-button">CONTACT ME</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="edu-footer">
+        <div class="container">
+            <p>Code with Faith &copy; 2025. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

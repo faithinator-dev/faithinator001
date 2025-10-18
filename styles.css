@@ -1,0 +1,8 @@
+/* Add this new CSS class to your <style> block */
+.text-wrapper {
+    background-color: var(--primary-bg); /* Use a slightly darker background */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle white border */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
